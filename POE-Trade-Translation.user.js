@@ -4,7 +4,7 @@
 // @description    POE国际服市集翻译——持续更新
 // @license        GPL
 // @version        1.0.0
-// @author         shuma
+// @author         MaxZhang666
 // @source         https://wiki.wandhi.com
 // @include        *://*
 // @require        https://lib.baomitu.com/diff-match-patch/1.0.5/index.min.js
