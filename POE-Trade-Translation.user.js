@@ -2,7 +2,7 @@
 // @name           POE国际服市集翻译——持续更新
 // @namespace      https://wiki.wandhi.com
 // @description    POE国际服市集翻译——持续更新
-// @license        MIT
+// @license        GPL
 // @version        1.0.0
 // @author         shuma
 // @source         https://wiki.wandhi.com
@@ -18,10 +18,8 @@
 // @grant          GM_getResourceText
 // @grant          GM_addStyle
 // @grant          window.onurlchange
-// @connect        shuma.ink
-// @connect        gwdang.com
-// @connect        baidu.com
-// @connect        localhost
+// @connect        poe.game.qq.com
+// @connect        www.pathofexile.com
 // @run-at         document-end
 // @antifeature    membership
 // @antifeature    referral-link
