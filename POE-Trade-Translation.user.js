@@ -3,7 +3,7 @@
 // @namespace      https://wiki.wandhi.com
 // @description    POE国际服市集翻译——持续更新
 // @license        GPL
-// @version        1.0.0
+// @version        0.0.2
 // @author         MaxZhang666
 // @source         https://wiki.wandhi.com
 // @include        *://*
