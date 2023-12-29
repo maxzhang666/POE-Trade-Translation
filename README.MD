@@ -12,3 +12,7 @@
 ### 汉化数据仓库,汉化调整请提交到这里
 
 [汉化数据](https://github.com/maxzhang666/POE-Trade-Translation)
+
+## 更新日志
+
+- 0.0.4 增加赛季内容搜索
