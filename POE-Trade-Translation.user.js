@@ -3,7 +3,7 @@
 // @namespace     https://wiki.wandhi.com
 // @description   POE国际服市集翻译——持续更新
 // @license       MIT
-// @version       0.0.5
+// @version       0.0.6
 // @author        MaxZhang666
 // @source        https://github.com/maxzhang666/POE-Trade-Translation
 // @include       *://*
@@ -1108,9 +1108,9 @@
                             onOk: function() {
                                 window.location.reload();
                             }
-                        }) : Toast_1.Toast.error("\u6570\u636e[" + failItem.join(",") + "]\u4e0b\u8f7d\u5931\u8d25,\u8bf7\u5237\u65b0\u91cd\u8bd5");
+                        }) : Toast_1.Toast.error("\u6570\u636e[" + failItem.join(",") + "]\u4e0b\u8f7d\u5931\u8d25,\u8bf7\u5237\u65b0\u91cd\u8bd5", 5);
                     }));
-                } else Toast_1.Toast.success("\u6570\u636e\u52a0\u8f7d\u5b8c\u6210,\u5f00\u59cb\u7ec4\u88c5\u8bcd\u5e93"), 
+                } else Toast_1.Toast.success("\u6570\u636e\u52a0\u8f7d\u5b8c\u6210,\u5f00\u59cb\u7ec4\u88c5\u8bcd\u5e93", 3), 
                 this.init();
             }, Translation.prototype.init = function() {
                 var zhStats = Config_1.Config.get(SettingItem_1.SettingItem.ZhStats).data, usStats = Config_1.Config.get(SettingItem_1.SettingItem.UsStats).data, zhItem = Config_1.Config.get(SettingItem_1.SettingItem.ZhItem).data, usItem = Config_1.Config.get(SettingItem_1.SettingItem.UsItem).data, zhStatic = Config_1.Config.get(SettingItem_1.SettingItem.ZhStatic).data;
@@ -1123,12 +1123,8 @@
                     item.entries.forEach((function(word) {
                         Translation.words.usStats.set(word.id, word.text);
                     }));
-                })), Translation.words.localItem = new Map(Object.entries(localItem)), usItem.result.forEach((function(category) {
-                    var labelarr = Translation.words.localItem.get(category.id);
-                    labelarr && (category.label = labelarr + "(" + category.label + ")"), category.entries.forEach((function(item) {
-                        Translation.words.localItem.get(item.text) ? item.text = Translation.words.localItem.get(item.text) + "(" + item.text + ")" : item.text = "\u2605" + item.text;
-                    }));
-                })), Core_1.Core.addScript("var __ = " + JSON.stringify(uiInterface)), localStorage["lscache-tradeitems"] = JSON.stringify(this.itemsTranslate(zhItem.result, usItem.result)), 
+                })), Translation.words.localItem = new Map(Object.entries(localItem)), Core_1.Core.addScript("var __ = " + JSON.stringify(uiInterface)), 
+                localStorage["lscache-tradeitems"] = JSON.stringify(this.itemsTranslate(zhItem.result, usItem.result)), 
                 localStorage["lscache-tradestats"] = JSON.stringify(zhStats.result), localStorage["lscache-tradedata"] = JSON.stringify(zhStatic.result), 
                 localStorage.removeItem("lscache-tradeitems-cacheexpiration"), localStorage.removeItem("lscache-tradestats-cacheexpiration"), 
                 localStorage.removeItem("lscache-tradedata-cacheexpiration"), localStorage["local-updated"] = +new Date;
@@ -1216,9 +1212,10 @@
                     if (zhItem) {
                         item.label = zhItem.label;
                         for (var i = 0; i < item.entries.length; i++) {
-                            var usEntry = item.entries[i], zhEntry = zhItem.entries[i];
-                            usEntry && zhEntry && (usEntry.text && zhEntry.text && (usEntry.text = zhEntry.text), 
-                            usEntry.name && zhEntry.name && (usEntry.name = zhEntry.name));
+                            var usEntry = item.entries[i], zhEntry = zhItem.entries[i - 0];
+                            usEntry && zhEntry && (usEntry.text && (Translation.words.localItem.get(usEntry.text) ? (usEntry.text = Translation.words.localItem.get(usEntry.text), 
+                            Logger_1.Logger.info("text:" + usEntry.text + ",0")) : zhEntry.text && (usEntry.text = zhEntry.text)), 
+                            usEntry.name && (Translation.words.localItem.get(usEntry.name) ? usEntry.name = Translation.words.localItem.get(usEntry.name) : zhEntry.name && (usEntry.name = zhEntry.name)));
                         }
                     }
                 })), Logger_1.Logger.info(usItems), usItems;
