@@ -3,13 +3,13 @@
 // @namespace     https://wiki.wandhi.com
 // @description   POE国际服市集翻译——持续更新
 // @license       MIT
-// @version       0.0.6
+// @version       0.0.7
 // @author        MaxZhang666
 // @source        https://github.com/maxzhang666/POE-Trade-Translation
 // @include       *://*
-// @require       https://unpkg.com/react@18.2.0/umd/react.production.min.js
-// @require       https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js
-// @require       https://unpkg.com/@douyinfe/semi-ui@2.49.2/dist/umd/semi-ui.min.js
+// @require       https://registry.npmmirror.com/react/18.2.0/files/cjs/react.production.min.js
+// @require       https://registry.npmmirror.com/react-dom/18.2.0/files/cjs/react-dom.production.min.js
+// @require       https://registry.npmmirror.com/@douyinfe/semi-ui/2.51.0/files/dist/umd/semi-ui.min.js
 // @supportURL    https://github.com/maxzhang666/POE-Trade-Translation
 // @grant         GM_xmlhttpRequest
 // @grant         GM_registerMenuCommand
