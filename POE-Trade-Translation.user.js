@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          POE国际服市集翻译——持续更新
 // @namespace     https://wiki.wandhi.com
-// @description   POE国际服市集翻译——持续更新
+// @description   POE国际服市集翻译脚本
 // @license       MIT
 // @version       0.0.7
 // @author        MaxZhang666
