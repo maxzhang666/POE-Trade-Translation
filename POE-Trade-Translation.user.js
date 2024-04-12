@@ -183,7 +183,9 @@
                 if (null == source || 0 == source) return "0 Bytes";
                 "string" == typeof source && (source = parseFloat(source));
                 var index;
-                return index = Math.floor(Math.log(source) / Math.log(1024)), (source / Math.pow(1024, index)).toFixed(2) + " " + [ "Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" ][index];
+                index = Math.floor(Math.log(source) / Math.log(1024));
+                var sizeStr = (source / Math.pow(1024, index)).toFixed(2);
+                return "".concat(sizeStr, " ").concat([ "Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB" ][index]);
             }, Core.strDiff = function(str1, str2, remove, joinStr) {
                 return void 0 === joinStr && (joinStr = ""), (new diff_match_patch_1.default).diff_main(str1, str2).filter((function(_a) {
                     return _a[0] === diff_match_patch_1.default.DIFF_INSERT;
@@ -229,25 +231,25 @@
                     value: v,
                     exp: -1 == exp ? exp : (new Date).getTime() + 1e3 * exp
                 };
-                GM_setValue("POE-Trade-Translation_" + this.encode(key), JSON.stringify(obj));
+                GM_setValue("POE-Trade-Translation_".concat(this.encode(key)), JSON.stringify(obj));
             }, Config.get = function(key, defaultValue) {
                 void 0 === defaultValue && (defaultValue = !1);
-                var objStr = GM_getValue("POE-Trade-Translation_" + this.encode(key));
+                var objStr = GM_getValue("POE-Trade-Translation_".concat(this.encode(key)));
                 if (objStr) {
                     var obj = JSON.parse(objStr);
-                    if (-1 == obj.exp || obj.exp > (new Date).getTime()) return Logger_1.Logger.info(key + " cache true"), 
+                    if (-1 == obj.exp || obj.exp > (new Date).getTime()) return Logger_1.Logger.info("".concat(key, " cache true")), 
                     obj.value;
                 }
-                return Logger_1.Logger.info(key + " cache false"), defaultValue;
+                return Logger_1.Logger.info("".concat(key, " cache false")), defaultValue;
             }, Config.getLocalStorage = function(key, defaultValue) {
                 void 0 === defaultValue && (defaultValue = !1);
-                var objStr = localStorage.getItem("" + this.encode(key));
+                var objStr = localStorage.getItem("".concat(this.encode(key)));
                 if (objStr) {
                     var obj = JSON.parse(objStr);
-                    if (-1 == obj.exp || obj.exp > (new Date).getTime()) return Logger_1.Logger.info(key + " storage cache true"), 
+                    if (-1 == obj.exp || obj.exp > (new Date).getTime()) return Logger_1.Logger.info("".concat(key, " storage cache true")), 
                     obj.value;
                 }
-                return Logger_1.Logger.info(key + " storage cache false"), defaultValue;
+                return Logger_1.Logger.info("".concat(key, " storage cache false")), defaultValue;
             }, Config.setLocalStorage = function(key, v, exp) {
                 void 0 === exp && (exp = -1);
                 var obj = {
@@ -255,7 +257,7 @@
                     value: v,
                     exp: -1 == exp ? exp : (new Date).getTime() + 1e3 * exp
                 };
-                localStorage.setItem("" + this.encode(key), JSON.stringify(obj));
+                localStorage.setItem("".concat(this.encode(key)), JSON.stringify(obj));
             }, Config.decode = function(str) {
                 return atob(str);
             }, Config.encode = function(str) {
@@ -322,8 +324,8 @@
                 url || (url = Core_1.Core.currentUrl());
                 var flag = !1;
                 return this.rules.forEach((function(v, k) {
-                    return v.test(url) ? (Logger_1.Logger.debug("app:" + _this.appName + "_" + SiteEnum_1.SiteEnum[k] + " test pass"), 
-                    flag = !0, _this.site = k, !1) : (Logger_1.Logger.warn("app:" + _this.appName + " test fail"), 
+                    return v.test(url) ? (Logger_1.Logger.debug("app:".concat(_this.appName, "_").concat(SiteEnum_1.SiteEnum[k], " test pass")), 
+                    flag = !0, _this.site = k, !1) : (Logger_1.Logger.warn("app:".concat(_this.appName, " test fail")), 
                     !0);
                 })), flag;
             }, AppBase;
@@ -970,7 +972,7 @@
                 this.plugins.every((function(element) {
                     return !element.linkTest() || (new Promise((function(resolve) {
                         resolve(1);
-                    })).then(element.Process), Logger_1.Logger.debug("element unique:" + element.unique()), 
+                    })).then(element.Process), Logger_1.Logger.debug("element unique:".concat(element.unique())), 
                     !element.unique());
                 }));
             }, POE_Trade_Translation;
@@ -1006,9 +1008,10 @@
             } instanceof Array && function(d, b) {
                 d.__proto__ = b;
             } || function(d, b) {
-                for (var p in b) b.hasOwnProperty(p) && (d[p] = b[p]);
+                for (var p in b) Object.prototype.hasOwnProperty.call(b, p) && (d[p] = b[p]);
             }, extendStatics(d, b);
         }, function(d, b) {
+            if ("function" != typeof b && null !== b) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
             function __() {
                 this.constructor = d;
             }
@@ -1033,7 +1036,7 @@
         }), __importStar = this && this.__importStar || function(mod) {
             if (mod && mod.__esModule) return mod;
             var result = {};
-            if (null != mod) for (var k in mod) "default" !== k && Object.hasOwnProperty.call(mod, k) && __createBinding(result, mod, k);
+            if (null != mod) for (var k in mod) "default" !== k && Object.prototype.hasOwnProperty.call(mod, k) && __createBinding(result, mod, k);
             return __setModuleDefault(result, mod), result;
         };
         Object.defineProperty(exports, "__esModule", {
@@ -1076,7 +1079,7 @@
                             });
                         })).catch((function() {
                             SemiUI.Toast.warning({
-                                content: "\u6570\u636e" + settingItem + "\u4e0b\u8f7d\u5931\u8d25"
+                                content: "\u6570\u636e".concat(settingItem, "\u4e0b\u8f7d\u5931\u8d25")
                             }), resolve({
                                 settingItem: settingItem,
                                 success: !1
@@ -1108,7 +1111,7 @@
                             onOk: function() {
                                 window.location.reload();
                             }
-                        }) : Toast_1.Toast.error("\u6570\u636e[" + failItem.join(",") + "]\u4e0b\u8f7d\u5931\u8d25,\u8bf7\u5237\u65b0\u91cd\u8bd5", 5);
+                        }) : Toast_1.Toast.error("\u6570\u636e[".concat(failItem.join(","), "]\u4e0b\u8f7d\u5931\u8d25,\u8bf7\u5237\u65b0\u91cd\u8bd5"), 5);
                     }));
                 } else Toast_1.Toast.success("\u6570\u636e\u52a0\u8f7d\u5b8c\u6210,\u5f00\u59cb\u7ec4\u88c5\u8bcd\u5e93", 3), 
                 this.init();
@@ -1123,7 +1126,7 @@
                     item.entries.forEach((function(word) {
                         Translation.words.usStats.set(word.id, word.text);
                     }));
-                })), Translation.words.localItem = new Map(Object.entries(localItem)), Core_1.Core.addScript("var __ = " + JSON.stringify(uiInterface)), 
+                })), Translation.words.localItem = new Map(Object.entries(localItem)), Core_1.Core.addScript("var __ = ".concat(JSON.stringify(uiInterface))), 
                 localStorage["lscache-tradeitems"] = JSON.stringify(this.itemsTranslate(zhItem.result, usItem.result)), 
                 localStorage["lscache-tradestats"] = JSON.stringify(zhStats.result), localStorage["lscache-tradedata"] = JSON.stringify(zhStatic.result), 
                 localStorage.removeItem("lscache-tradeitems-cacheexpiration"), localStorage.removeItem("lscache-tradestats-cacheexpiration"), 
@@ -1214,7 +1217,7 @@
                         for (var i = 0; i < item.entries.length; i++) {
                             var usEntry = item.entries[i], zhEntry = zhItem.entries[i - 0];
                             usEntry && zhEntry && (usEntry.text && (Translation.words.localItem.get(usEntry.text) ? (usEntry.text = Translation.words.localItem.get(usEntry.text), 
-                            Logger_1.Logger.info("text:" + usEntry.text + ",0")) : zhEntry.text && (usEntry.text = zhEntry.text)), 
+                            Logger_1.Logger.info("text:".concat(usEntry.text, ",").concat(0))) : zhEntry.text && (usEntry.text = zhEntry.text)), 
                             usEntry.name && (Translation.words.localItem.get(usEntry.name) ? usEntry.name = Translation.words.localItem.get(usEntry.name) : zhEntry.name && (usEntry.name = zhEntry.name)));
                         }
                     }
@@ -1838,7 +1841,7 @@
                         obj_1[v] = k;
                     })), res = JSON.stringify(obj_1);
                 } else data.forEach((function(k, v) {
-                    res += v + "=" + encodeURIComponent(k.toString()) + "&";
+                    res += "".concat(v, "=").concat(encodeURIComponent(k.toString()), "&");
                 })), res = Common_1.Common.trim(res, "&");
                 return res;
             }, Http.post = function(url, data, contentType, timeOut) {
@@ -1954,9 +1957,10 @@
             } instanceof Array && function(d, b) {
                 d.__proto__ = b;
             } || function(d, b) {
-                for (var p in b) b.hasOwnProperty(p) && (d[p] = b[p]);
+                for (var p in b) Object.prototype.hasOwnProperty.call(b, p) && (d[p] = b[p]);
             }, extendStatics(d, b);
         }, function(d, b) {
+            if ("function" != typeof b && null !== b) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
             function __() {
                 this.constructor = d;
             }
@@ -1997,9 +2001,10 @@
             } instanceof Array && function(d, b) {
                 d.__proto__ = b;
             } || function(d, b) {
-                for (var p in b) b.hasOwnProperty(p) && (d[p] = b[p]);
+                for (var p in b) Object.prototype.hasOwnProperty.call(b, p) && (d[p] = b[p]);
             }, extendStatics(d, b);
         }, function(d, b) {
+            if ("function" != typeof b && null !== b) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
             function __() {
                 this.constructor = d;
             }
@@ -2067,7 +2072,7 @@
                 var _this = this, _a = this.state, visible = _a.visible, source = _a.source, initV = {
                     source: source
                 };
-                return Logger_1.Logger.info("[SettingUI] visible: " + visible + ", source: " + source), 
+                return Logger_1.Logger.info("[SettingUI] visible: ".concat(visible, ", source: ").concat(source)), 
                 react_1.default.createElement(react_1.default.Fragment, null, react_1.default.createElement(semi_ui_1.Modal, {
                     title: "\u7cfb\u7edf\u914d\u7f6e",
                     visible: visible,
