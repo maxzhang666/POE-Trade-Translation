@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name          POE国际服市集翻译——持续更新
+// @name          POE国际服市集翻译——持续更新(仅支持POE1，POE2请等国服开放)
 // @namespace     https://wiki.wandhi.com
 // @description   POE国际服市集翻译脚本
 // @license       MIT
@@ -356,7 +356,7 @@
         (function(process, global) {
             var Reflect;
             !function(Reflect) {
-                !function(factory) {
+                !function() {
                     var root = "object" == typeof global ? global : "object" == typeof self ? self : "object" == typeof this ? this : Function("return this;")(), exporter = makeExporter(Reflect);
                     function makeExporter(target, previous) {
                         return function(key, value) {
