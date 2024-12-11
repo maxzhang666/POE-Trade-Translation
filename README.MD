@@ -9,6 +9,8 @@
 
 ![](https://img.caimogu.cc/data/original/editor/2023/12/31/de43eeaab9f7d6a345ae6bfd1e080b55.png)
 
+![e73aedc6c2a82dfaa6af69af5421ad8f.png](https://s2.loli.net/2024/12/11/cvXydiIxVPNDZoj.png)
+
 使用问题欢迎加群反馈
 [点击链接加入群聊【POE市集汉化脚本交流群】](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=MKMC1wN9f4yZnhabU22wxdBhkDBXIbGH&authKey=B4YcZkG5jou6hjL8hRreucltMBcPDDsfYhxak%2Fp%2Fug0WMJKQpYdQfIvZv8GoMhyO&noverify=0&group_code=278730334)
 
